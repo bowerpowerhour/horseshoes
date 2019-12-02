@@ -1,0 +1,303 @@
+*{ box-sizing: border-box; }
+header, main, nav, footer, figure, figcaption, aside, section, article { display: block; }
+
+body { background-color: #389943;
+	   background-image: linear-gradient(to bottom, #4DCC5C, #18421D);
+	   font-family:Verdana, Arial, sans-serif;
+       margin: 0;}
+caption { font-size: 1.5em;
+		  font-weight: bold;
+		  padding-bottom: 0.2em; }
+footer { background-color: #058935;
+		 color: #FFFFFF;
+		 clear: both; }
+footer a {text-decoration: none;
+	      font-weight: bold;
+		  color: #FFFFFF; }
+footer a:hover {text-decoration: underline; }
+/*
+h1 { color: #1C6636;
+	 font-family: Georgia, "Times New Roman", serif;
+     font-size: 3em;
+	 letter-spacing: 0.05em;
+	 margin-bottom: 0;
+	 margin-top: 0;
+	 text-shadow: 1px 1px 1px #CCCCCC;
+	 text-align: center; }
+*/
+
+/*
+h2 { color: #3399CC;
+	 font-family: Georgia, "Times New Roman", serif;
+	 text-shadow: 1px 1px 1px #CCCCCC; }
+*/
+
+h3 { color: #000033;
+	 font-family: Georgia, "Times New Roman", serif; }
+header { padding: 0.2em;
+		 text-align: center; }
+img {
+    max-width: 100%;
+    height: auto;
+    width: auto\9;}
+main { margin-left: 30px;
+	   margin-right: 30px;
+	   padding: 1px 20px 20px 20px; }
+main a { text-decoration: none;
+		 font-weight: bold; }
+main a:hover {text-decoration: underline; }
+
+table {border: 2px solid #18421D;
+	   border-collapse: collapse;
+	   margin: auto; }
+table a { color: #18421D;
+		  font-weight: bold; }
+table a:hover {text-decoration: underline; }
+td, th {padding: 0.5em;
+		border: 2px solid #18421D; }
+td {text-align: center; }
+th { color: #FFFFFF;
+	 font-weight: bold; }
+
+
+
+#introduction {font-size: 150%;
+               text-align: center;
+               color: #1C6636;
+               font-weight: bold;
+               text-shadow: 1px 1px 1px #CCCCCC;}
+
+
+#wrapper { background-color: #FFFFFF;
+		   color: #000066;
+		   margin: auto;
+		   min-width: 600px;
+           max-width: 1280px;
+           width: 80%; }
+
+/*
+Some stuff for CS 651
+*/
+
+button {font-size: 140%;
+        border-radius: 8px;}
+
+.flexContainerIntro { display: flex;
+                      flex-direction: column;}
+.flexContainerScoring { display: flex;
+				        justify-content: space-between;}
+.flexContainerColumn { display: flex;
+					   flex-direction: column;
+				       justify-content: space-between;}
+.gridPlayerOneInning { display: grid;
+                    grid-template-columns: auto auto;
+                    grid-template-rows: auto auto auto auto auto auto;
+                    grid-row-gap: 1px;
+                    text-align: center;
+                    background-color: #FFEBE7;}
+.gridPlayerTwoInning { display: grid;
+                       grid-template-columns: auto auto;
+                       grid-template-rows: auto auto auto auto auto auto;
+                       grid-row-gap: 1px;
+                       text-align: center;
+                       background-color: #DAFCFC;}
+.gridZeroInning { display: grid;
+                  grid-template-columns: auto auto;
+                  grid-template-rows: 33% 34% 33%;
+                  background-color: #D3D6D6;}
+.columnOfTwo { float: left;
+               padding: 10px;
+			         text-align: left;
+			         width: 50%;}
+.columnOfTwoRightAlign { float: right;
+                         padding: 10px;
+			                   text-align: right;
+			                   width: 50%;}
+.columnOfThree { float: left;
+                 padding: 10px;
+				         width: 33.33%;}
+.columnOfThreeCenteredText { float: left;
+                             padding: 10px;
+							               text-align: center;
+				                     width: 33.33%;}
+.overallScoreboard { color: #3399CC;
+					 font-family: Georgia, "Times New Roman", serif;
+					 font-size: 150%;
+					 font-weight: bold;
+					 text-shadow: 1px 1px 1px #CCCCCC;}
+.overallScoreboard h1 { color: #1C6636;
+						font-family: Georgia, "Times New Roman", serif;
+						font-size: 3em;
+						letter-spacing: 0.05em;
+						margin-bottom: 0;
+						margin-top: 0;
+						text-shadow: 1px 1px 1px #CCCCCC;
+						text-align: center; }
+.ringersTwoCheckbox { grid-column-start: 1;
+                      grid-column-end: 2;
+                      grid-row-start: 1;
+                      grid-row-end: 2; }
+.ringersTwoPromptLabel { color: #FFFFFF;
+                         background-color: #16AF32;
+                         grid-column-start: 2;
+                         grid-column-end: 3;
+                         grid-row-start: 1;
+                         grid-row-end: 2;
+                         padding: 2%;}
+.ringersOnePromptLabel { color: #FFFFFF;
+                         background-color: #0DBBBB;
+                         padding: 2%; }
+.pointsTwoPromptLabel { color: #FFFFFF;
+                         background-color: #E47A09;
+                         padding: 2%; }
+.pointsOnePromptLabel { color: #FFFFFF;
+                         background-color: #AE08E8;
+                         padding: 2%; }
+.pointsZeroPromptLabel { color: #FFFFFF;
+                         background-color: #000000;
+                         padding: 2%;
+                         grid-column-start: 2;
+                         grid-column-end: 3;
+                         grid-row-start: 2;
+                         grid-row-end: 3; }
+.pointsZeroCheckbox { grid-column-start: 1;
+                      grid-column-end: 2;
+                      grid-row-start: 2;
+                      grid-row-end: 3; }
+.playerOneTotals { color: #FF3333;
+                   font-size: 115%;}
+.playerTwoTotals { color: #3336FF;
+                   font-size: 115%;}
+.totalRingersPrompt{ grid-column-start: 1;
+                     grid-column-end: 2;
+                     grid-row-start: 1;
+                     grid-row-end: 2;}
+.ringerPercentagePrompt { grid-column-start: 2;
+                          grid-column-end: 3;
+                          grid-row-start: 1;
+                          grid-row-end: 2;}
+
+#playerOneNameLarge { color: #FF3333;}
+#playerTwoNameLarge { color: #3336FF;}
+
+#playerOneOverallPoints { color: #FF3333;}
+#playerTwoOverallPoints { color: #3336FF;}
+
+#playerOneTable {padding-bottom: 1.0em;
+                 padding-top: 1.0em;
+                 border: 1px #FF3333;
+                 border-collapse: collapse;}
+#playerOneTable caption {color: #FF3333; }
+#playerOneTable th { background-color: #FF3333; }
+#playerOneTable tr:nth-of-type(odd) { background-color: #FAC6CD; }
+
+#playerTwoTable {padding-bottom: 1.0em;
+                 padding-top: 1.0em;
+                 border: 1px #3336FF;
+                 border-collapse: collapse;}
+#playerTwoTable caption { color: #3336FF; }
+#playerTwoTable th { background-color: #3336FF; }
+#playerTwoTable tr:nth-of-type(odd) { background-color: #ACE0EF; }
+
+#playerOneNameMedium { color: #FF3333;
+				   font-size: 115%;}
+#playerTwoNameMedium { color: #3336FF;
+				   font-size: 115%;}
+#zeroPointsMedium { color: #000000;
+           font-size: 115%;}
+
+#playerOneStatistics{ text-align: center;
+                      display: grid;
+                      grid-template-columns: auto auto;
+                      grid-template-rows: auto auto;
+                      color: #FF3333;}
+#playerTwoStatistics{ text-align: center;
+                      display: grid;
+                      grid-template-columns: auto auto;
+                      grid-template-rows: auto auto;
+                      color: #3336FF;}
+
+#inningButtons {display: flex;
+				        justify-content: space-around;
+                text-align: center;
+                padding: 2%;}
+#gameSummaryPrompt {display: flex;
+                    justify-content: center;
+                    font-size: 125%;
+                    font-weight: bold;
+                    color: #0A6D23;
+                    padding-top: 6%;}
+
+#inningInformation{ display:grid;
+                    grid-template-columns: auto auto auto;
+                    justify-content: space-around;
+                    padding-top: 2%;}
+
+#allInningStuff {display: none;}
+
+#inningHeading {display:grid;
+                grid-template-columns: auto auto auto auto;
+                color: #0A6D23;
+                padding-top: 2%;
+                font-weight: bold;}
+#inningNumberPrompt, #inningShoesPrompt {text-align: right;}
+
+#gameLength{color: #0A6D23;
+            padding-top: 2%;
+            font-weight: bold;
+            font-size: 120%;}
+#shoes {color: #0A6D23;
+        padding-top: 2%;
+        font-weight: bold;
+        font-size: 120%;}
+
+
+/*
+End stuff for CS 651
+*/
+
+
+.footercolumnheading {font-style: italic; }
+.row:after { clear: both;
+             content: "";
+             display: table; }
+#mobile {display: none; }
+#desktop {display: inline; }
+
+@media only screen and (max-width: 64em) {
+	body {margin: 0;
+		  background-color: #FFFFFF; }
+	#wrapper {min-width: 0px;
+			  width: auto;
+			  box-shadow: none;
+			  border: none; }
+	header {padding-top: 0.5em;
+			padding-bottom: 0.5em;
+			padding-left: 0em;
+			height: auto; }
+	h2 {letter-spacing: 0.1em; }
+	main {margin-left: 0; }
+	footer {margin-left: 0; }
+  button {font-size: 120%;}
+}
+
+@media only screen and (max-width: 37.5em) {
+	 h1, h2 { font-size: 100%; }
+   span { font-size: 80%; }
+  button {font-size: 100%; }
+  footer {font-size: 50%; }
+  .columnOfTwo {width: 100%; }
+	.playerOneTotals {font-size: 85%; }
+	.playerTwoTotals {font-size: 85%; }
+	.ringersOnePromptLabel, .ringersTwoPromptLabel {font-size: 90%; }
+	.pointsOnePromptLabel, .pointsTwoPromptLabel {font-size: 90%; }
+	.pointsZeroPromptLabel {font-size: 90%; }
+  #gameLength{font-size: 90%; }
+  #shoes {font-size: 90%;
+          text-align: right;}
+  #playerOneNameMedium, #playerTwoNameMedium {font-size: 85%; }
+	#zeroPointsMedium {font-size: 85%; }
+
+	#mobile {display: inline; }
+	#desktop {display: none; }
+}

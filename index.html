@@ -1,0 +1,1414 @@
+<!DOCTYPE html>
+<html lang="en-US">
+
+<head>
+  <meta charset="utf-8">
+  <meta name="description" content="A horseshoes scoreboard">
+  <meta name="keywords" content="horseshoes, horseshoe, scoreboard, ringer,
+  ringers, point, points, inning, innings">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Horseshoes Scoreboard</title>
+  <link rel="stylesheet" href="horseshoes.css" >
+  <link rel="icon" href="favicon.ico" type="image/x-icon">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+</head>
+
+
+
+<body>
+  <div id="wrapper">
+
+    <header>
+      <!-- Need a horseshoes logo  -->
+    </header>
+
+    <nav>
+
+    </nav>
+
+    <main>
+
+      <div id="introduction" class="flexContainerIntro">
+
+        <div id="scoreboardTitle">
+          <h1>Horseshoes Scoreboard</h1>
+        </div>  <!-- end id scoreboardTitle -->
+
+        <div id="editPlayers">
+          <button type="button" id="editPlayerNames" onclick="editPlayerNames()">Edit players</button>
+        </div>
+
+      </div> <!-- end id introduction  -->
+
+      <div id="overallScores">
+
+        <div id="playerNames" class="flexContainerScoring">
+          <label class="overallScoreboard" for="playerOneOverallPoints"><h2 id="playerOneNameLarge">Player One</h2></label>
+          <label class="overallScoreboard" for="playerTwoOverallPoints"><h2 id="playerTwoNameLarge">Player Two</h2></label>
+        </div> <!-- end id playerOneOverall -->
+
+        <div id="playerPoints" class="flexContainerScoring">
+
+          <label class="overallScoreboard"><h1 id="playerOneOverallPoints">0</h1></label>
+          <label class="overallScoreboard"><h1 id="playerTwoOverallPoints">0</h1></label>
+        </div> <!-- end id playerTwoOverall -->
+
+      </div> <!-- end id overallScores -->
+
+      <div id="inningInformation">
+
+        <div id="gameLength">
+          <label id="gameLengthPrompt" for="gameLengthShoes">Game Length: </label>
+          <label id="gameLengthShoes">30</label>
+        </div>  <!-- end id gameLength -->
+
+        <div id="nextInning">
+          <button type="button" id="enterNextInning" onclick="beginInning()">Enter Next Inning</button>
+        </div>  <!-- end id nextInning -->
+
+        <div id="shoes">
+          <label id="shoesPrompt" for="shoesPlayed">Shoes Played: </label>
+          <label id="shoesPlayed">0</label>
+        </div>  <!-- end id shoes -->
+
+      </div> <!-- end id innngInformation -->
+
+      <div id="allInningStuff">
+
+        <div id="individualInning">
+          <div id ="inningHeading">
+            <label id="inningNumberPrompt" for="inningNumber">Inning:&#160;&#160;</label>
+            <label id="inningNumber">0</label>
+            <label id="inningShoesPrompt" for="inningShoes">Shoes&#160;&#160;</label>
+            <label id="inningShoes">#1 & #2</label>
+          </div> <!-- end id inningHeading  -->
+
+          <div class="row">
+            <div class="columnOfThree">
+              <div id="playerOneInning">
+                <fieldset>
+                  <legend id="playerOneNameMedium">Player One</legend>
+
+                  <div class="gridPlayerOneInning" id="playerOneResult">
+                    <input type="checkbox" name = "checkbox" class="ringersTwoCheckbox" id="playerOneInningRingersTwoCheckbox" onclick="boxWasChecked(0)">
+                    <label name ="checkboxLabel" class= "ringersTwoPromptLabel" id="playerOneInningRingersTwoLabel" for="playerOneInningRingersTwoCheckbox">&#160;2 Ringers&#160;<br>&#160;( +6 )&#160;</label>
+                    <input type="checkbox" name = "checkbox" class="ringersOneCheckbox" id="playerOneInningRingersOneCheckbox" onclick="boxWasChecked(1)">
+                    <label name ="checkboxLabel" class= "ringersOnePromptLabel" id="playerOneInningRingersOneLabel" for="playerOneInningRingersOneCheckbox">&#160;1 Ringers&#160;<br>&#160;( +3 )&#160;</label>
+                    <input type="checkbox" name = "checkbox" class="pointsTwoCheckbox" id="playerOneInningPointsTwoCheckbox" onclick="boxWasChecked(2)">
+                    <label name ="checkboxLabel" class= "pointsTwoPromptLabel" id="playerOneInningPointsTwoLabel" for="playerOneInningPointsTwoCheckbox">&#160;2 Points&#160;<br>&#160;( +2 )&#160;</label>
+                    <input type="checkbox" name = "checkbox" class="pointsOneCheckbox" id="playerOneInningPointsOneCheckbox" onclick="boxWasChecked(3)">
+                    <label name ="checkboxLabel" class= "pointsOnePromptLabel" id="playerOneInningPointsOneLabel" for="playerOneInningPointsOneCheckbox">&#160;1 Point&#160;<br>&#160;( +1 )&#160;</label>
+                    <label class="playerOneTotals" for="playerOneInningResult">Result</label>
+                    <label class="playerOneTotals" for="playerOneInningPoints">Points</label>
+                    <label class="playerOneTotals" id="playerOneInningResult">0</label>
+                    <label class="playerOneTotals" id="playerOneInningPoints">0</label>
+                  </div> <!-- end id playerOneResult -->
+
+                </fieldset>
+              </div> <!-- end id playerOneInning -->
+
+            </div>  <!-- end of 1st column -->
+
+            <div class="columnOfThree">
+
+              <fieldset>
+                <legend id="zeroPointsMedium">Zero points</legend>
+
+                <div class="gridZeroInning" id="zeroPoints">
+                  <input type="checkbox" name = "checkbox" class="pointsZeroCheckbox" id = "pointsZeroCheckbox" onclick="boxWasChecked(8)">
+                  <label name ="checkboxLabel" class= "pointsZeroPromptLabel" id = "pointsZeroPromptLabel" for="pointsZeroCheckbox">&#160;No Points&#160;<br>&#160;( +0 )&#160;</label>
+                </div> <!-- end id zeroPoints -->
+              </fieldset>
+            </div>  <!-- end of 2nd column -->
+
+            <div class="columnOfThree">
+
+              <div id="playerTwoInning">
+                <fieldset>
+                  <legend id="playerTwoNameMedium">Player Two</legend>
+
+                  <div class="gridPlayerTwoInning" id="playerTwoResult">
+                    <input type="checkbox" name = "checkbox" class="ringersTwoCheckbox" id="playerTwoInningRingersTwoCheckbox" onclick="boxWasChecked(4)">
+                    <label name ="checkboxLabel" class= "ringersTwoPromptLabel" id="playerTwoInningRingersTwoLabel" for="playerTwoInningRingersTwoCheckbox">&#160;2 Ringers&#160;<br>&#160;( +6 )&#160;</label>
+                    <input type="checkbox" name = "checkbox" class="ringersOneCheckbox" id="playerTwoInningRingersOneCheckbox" onclick="boxWasChecked(5)">
+                    <label name ="checkboxLabel" class= "ringersOnePromptLabel" id="playerTwoInningRingersOneLabel" for="playerTwoInningRingersOneCheckbox">&#160;1 Ringers&#160;<br>&#160;( +3 )&#160;</label>
+                    <input type="checkbox" name = "checkbox" class="pointsTwoCheckbox" id="playerTwoInningPointsTwoCheckbox" onclick="boxWasChecked(6)">
+                    <label name ="checkboxLabel" class= "pointsTwoPromptLabel" id="playerTwoInningPointsTwoLabel" for="playerTwoInningPointsTwoCheckbox">&#160;2 Points&#160;<br>&#160;( +2 )&#160;</label>
+                    <input type="checkbox" name = "checkbox" class="pointsOneCheckbox" id="playerTwoInningPointsOneCheckbox" onclick="boxWasChecked(7)">
+                    <label name ="checkboxLabel" class= "pointsOnePromptLabel" id="playerTwoInningPointsOneLabel" for="playerTwoInningPointsOneCheckbox">&#160;1 Point&#160;<br>&#160;( +1 )&#160;</label>
+                    <label class="playerTwoTotals" for="playerTwoInningResult">Result</label>
+                    <label class="playerTwoTotals" for="playerTwoInningPoints">Points</label>
+                    <label class="playerTwoTotals" id="playerTwoInningResult">0</label>
+                    <label class="playerTwoTotals" id="playerTwoInningPoints">0</label>
+                  </div> <!-- end id playerTwoResult -->
+
+                </fieldset>
+              </div> <!-- end id playerTwoInning -->
+
+            </div> <!-- end of 3rd column -->
+
+          </div>  <!-- end of the "row" of three columns -->
+
+        </div> <!-- end id individualInning -->
+
+        <div id="inningButtons">
+          <button type="button" id="enterThisInning">Enter</button>
+          <button type="button" id="reset" onclick="reset()">Reset</button>
+          <button type="button" id="cancel">Cancel</button>
+        </div> <!-- end id inningButtons -->
+
+      </div> <!--  end id allInningStuff -->
+
+      <div id="gameLog">
+        <div id="gameSummaryPrompt">
+          <label>Game Summary</label>
+        </div>  <!-- end id gameSummaryPrompt  -->
+
+        <div class="row">
+          <div class="columnOfTwo" id="playerOneSummary">
+            <div id="playerOneTable">
+              <table id="tableForOne">
+                <caption id="playerOneCaption">Player One</caption>
+                <tr>
+                  <th>Shoes</th>
+                  <th>Result</th>
+                  <th>Score</th>
+                  <th>Total</th>
+                </tr>
+              </table>
+            </div>  <!-- end id playerOneTable -->
+
+            <div id="playerOneStatistics">
+              <label class="totalRingersPrompt" for="playerOneTotalRingers">Total Ringers: </label>
+              <label class="totalRingers" id="playerOneTotalRingers">0</label>
+              <label class="ringerPercentagePrompt" for="playerOneRingerPercentage">Ringer Percentage:</label>
+              <label class="ringerPercentage" id="playerOneRingerPercentage">0.0%</label>
+            </div>  <!-- end id playerOneStatistics  -->
+          </div>  <!--  end id playerOneSummary -->
+
+          <div class="columnOfTwo" id="playerTwoSummary">
+            <div id="playerTwoTable">
+              <table id="tableForTwo">
+                <caption id="playerTwoCaption">Player Two</caption>
+                <tr>
+                  <th>Shoes</th>
+                  <th>Result</th>
+                  <th>Score</th>
+                  <th>Total</th>
+                </tr>
+              </table>
+            </div>  <!-- end id playerTwoTable -->
+
+            <div id="playerTwoStatistics">
+              <label class="totalRingersPrompt" for="playerTwoTotalRingers">Total Ringers: </label>
+              <label class="ringerPercentagePrompt" for="playerTwoRingerPercentage">Ringer Percentage:</label>
+              <label class="totalRingers" id="playerTwoTotalRingers">0</label>
+              <label class="ringerPercentage" id="playerTwoRingerPercentage">0.0%</label>
+            </div>  <!-- end id playerTwoStatistics -->
+          </div>  <!--  end id playerOneSummary -->
+        </div>  <!-- end "row" of 2 columns -->
+
+      </div> <!-- end id gameLog -->
+
+    </main>
+
+    <footer>
+      <div class="row">
+        <div class="columnOfThreeCenteredText">
+          <p class="footercolumnheading">Call</p>
+          <p>No score<br>
+            1 ringer each- no score<br>
+            2 ringers each- no score<br>
+            1 ringer each; 1 point<br>
+            1 point<br>
+            2 points<br>
+            1 ringer- 3 points<br>
+            3 ringers- 3 points<br>
+            1 ringer- 4 points<br>
+            2 ringers- 6 points</p>
+          </div>
+          <div class="columnOfThreeCenteredText">
+            <p class="footercolumnheading">Ringers</p>
+            <p>&#160;&#160;:<br>
+              &#160;X&#160;&#160;&#160;:&#160;&#160;X<br>
+              &#160;&#160;X&#160;X&#160;:&#160;X&#160;X<br>
+              X&#160;|&#160;&#160;:&#160;&#160;X<br>
+              |&#160;&#160;:&#160;<br>
+              |&#160;|&#160;:&#160;&#160;<br>
+              &#160;O&#160;&#160;&#160;:&#160;&#160;&#160;&#160;<br>
+              &#160;&#160;X&#160;O&#160;:&#160;&#160;X&#160;&#160;<br>
+              O&#160;|&#160;&#160;:&#160;&#160;&#160;&#160;<br>
+              O&#160;O&#160;:&#160;&#160;&#160;&#160;</p>
+            </div>
+            <div class="columnOfThreeCenteredText">
+              <p class="footercolumnheading">Points</p>
+              <p>&#160;&#160;-&#160;&#160;:&#160;&#160;-<br>
+                &#160;&#160;-&#160;&#160;:&#160;&#160;-<br>
+                &#160;&#160;-&#160;&#160;:&#160;&#160;-<br>
+                &#160;&#160;1&#160;&#160;:&#160;&#160;-<br>
+                &#160;&#160;1&#160;&#160;:&#160;&#160;-<br>
+                &#160;&#160;2&#160;&#160;:&#160;&#160;-<br>
+                &#160;&#160;3&#160;&#160;:&#160;&#160;-<br>
+                &#160;&#160;3&#160;&#160;:&#160;&#160;-<br>
+                &#160;&#160;4&#160;&#160;:&#160;&#160;-<br>
+                &#160;&#160;6&#160;&#160;:&#160;&#160;-<br>
+              </div>
+            </div>
+          </footer>
+        </div> <!--  end id wrapper -->
+
+
+
+        <script>
+
+
+        function Player(name){
+          this.name = name;
+          //this.totalScore = 0;
+          this.totalShoes = 0;
+          // this.totalCancelRingers = 0;  // may be able to use a for loop
+          //this.totalScoredRingers = 0;  // may be able to use a for loop
+          this.totalRingers = function() {return this.totalCancelRingers() + this.totalScoredRingers();};
+          this.inningScore = [0];
+          this.inningThrows = [""];
+          this.inningString = [""];
+          this.inningCancelRingers = [0];
+          this.inningScoredRingers = [0];
+          this.inningTotalRingers = function(x) {return this.inningCancelRingers[x] + this.inningScoredRingers[x];};
+          this.totalCancelRingers = function() {
+            var result = 0;
+            if (this.inningCancelRingers.length > 1){
+              for (var i = 1; i < this.inningCancelRingers.length; i++) {
+                result += this.inningCancelRingers[i];
+              }
+            }
+            return result;
+          };
+          this.totalScoredRingers = function() {
+            var result = 0;
+            if (this.inningScoredRingers.length > 1){
+              for (var i = 1; i < this.inningScoredRingers.length; i++) {
+                result += this.inningScoredRingers[i];
+              }
+            }
+            return result;
+          };
+          this.totalScore = function() {
+            var result = 0;
+            if (this.inningScore.length > 1){
+              for (var i = 1; i < this.inningScore.length; i++) {
+                result += this.inningScore[i];
+              }
+            }
+            return result;
+          };
+          // Useful if we need to find what the score was after a certain inning
+          this.runningScore = function(x) {
+            var result = 0;
+            if (this.inningScore.length > 1){
+              for (var i = 1; i <= x; i++) {
+                result += this.inningScore[i];
+              }
+            }
+            return result;
+          };
+
+        }// Player()
+
+        var playerOne = new Player("Player One");
+        var playerTwo = new Player("Player Two");
+
+        var completedShoes = 0;  // # of shoes thrown so far
+        var currentInning = 0;   // Inning currently being played
+        var inningsInGame = 15;  // Maybe allow users to select this in future
+        var shoesInGame = 30;    // 1 inning = 2 shoes
+        var isGameOver = false;  // Becomes true when all innings have been played
+        var needOvertime = false; //  Don't know if I'll get overtime coded into this project
+
+        // An out of order array of all the checkboxes for inning scoring
+        var inningCheckboxes = document.getElementsByName("checkbox");
+        var unorderedCheckboxes = Array.from(inningCheckboxes);
+
+        //    Order the allCheckboxes array so elements...
+        //     #0-3 Player 1 results
+        //     #4-7 Player 2 results
+        //     #8   Zero points
+        var zeroCheckboxArray = unorderedCheckboxes.slice(4, 5);
+        var allCheckboxes = unorderedCheckboxes.splice(4,1);
+        allCheckboxes = unorderedCheckboxes.concat(zeroCheckboxArray);
+
+        // An out of order array of all the labels for the checkboxes for inning scoring
+        var inningLabels = document.getElementsByName("checkboxLabel");
+        var unorderedLabels = Array.from(inningLabels);
+
+        //    Order the scoringLabels array so elements...
+        //     #0-3 Player 1 results
+        //     #4-7 Player 2 results
+        //     #8   Zero points
+        var zeroLabelArray = unorderedLabels.slice(4, 5);
+        var scoringLabels = unorderedLabels.splice(4,1);
+        scoringLabels = unorderedLabels.concat(zeroLabelArray);
+
+        var okToCloseInning = false;
+
+
+        // "ENTER NEXT INNING" button was clicked
+        $(document).ready(function(){
+          $("#enterNextInning").click(function(){
+            // Reset the individual inning form
+            reset();
+            // Increase & display the inning
+            increaseCurrentInning();
+            document.getElementById("inningNumber").innerHTML = currentInning;
+            // Add to arrays for each player
+            playerOne.inningScore.push(0);
+            playerOne.inningThrows.push("");
+            playerOne.inningString.push("");
+            playerOne.inningCancelRingers.push(0);
+            playerOne.inningScoredRingers.push(0);
+            playerTwo.inningScore.push(0);
+            playerTwo.inningThrows.push("");
+            playerTwo.inningString.push("");
+            playerTwo.inningCancelRingers.push(0);
+            playerTwo.inningScoredRingers.push(0);
+            // Put names in labels
+            document.getElementById("playerOneNameMedium").innerHTML = playerOne.name;
+            document.getElementById("playerTwoNameMedium").innerHTML = playerTwo.name;
+            // Put shoes in labels
+            document.getElementById("inningShoes").innerHTML = "#" + ((currentInning * 2) - 1) + " & #" + (currentInning * 2);
+            // Nothing in the scoring labels
+            document.getElementById("playerOneInningResult").innerHTML = "";
+            document.getElementById("playerTwoInningResult").innerHTML = "";
+            document.getElementById("playerOneInningPoints").innerHTML = "";
+            document.getElementById("playerTwoInningPoints").innerHTML = "";
+            $("#allInningStuff").fadeIn();
+            $("#inningInformation").fadeOut();
+            $("#gameLog").fadeOut();
+          });
+        });
+
+
+        // "ENTER" this inning was clicked
+        $(document).ready(function(){
+          $("#enterThisInning").click(function(){
+            // Make sure something got checked
+            var somethingIsChecked = false;
+
+            for (var i = 0; i < allCheckboxes.length; i++) {
+              if (allCheckboxes[i].checked) {
+                somethingIsChecked = true;
+                break;
+              }
+            }
+            // Error message if nothing is checked and end the function
+            if (!somethingIsChecked) {
+              alert("No scoring boxes checked.\n\n" +
+              "You must select at least one scoring box for this inning.");
+              return;
+            }
+
+            // Make sure the result of the checked boxes is actually possible, so it is OK to proceed
+            if (!isPossibleToScore()) {
+              alert("Impossible result!\n\n" +
+              "That result is not possible for an inning.  Please check your results.");
+              return;
+            }
+            // Confirm results- didn't do this
+
+            // If NO was selected, end the function so inning scoring can be adjusted
+            //    Didn't do this
+
+            // OK to increase the number of shoes (+2) as this inning is complete
+            increaseCompletedShoes();
+
+            // Update main overall scoreboard
+            updateScoreboard();
+
+            // Check for end of regulation game (we'll see if I code overtime...)
+            if (currentInning === inningsInGame) {
+              checkForWinner();
+              endOfGame();
+              document.getElementById("enterNextInning").disabled = true;
+            }
+
+            // Check for end of overtime game (if overtime gets coded)
+            //   DIDN"T GET TO THIS
+
+            // Show & hide sectinos
+            $("#allInningStuff").fadeOut();
+            $("#inningInformation").fadeIn();
+            $("#gameLog").fadeIn();
+          });
+        });
+
+
+        // "CANCEL" this inning was clicked
+        $(document).ready(function(){
+          $("#cancel").click(function(){
+            //  Need to put stuff in to cancel the inning, including removing from end of arrays
+            // Take away this inning
+            decreaseCurrentInning();
+
+            // Remove from arrays for each player
+            playerOne.inningScore.pop();
+            playerOne.inningThrows.pop();
+            playerOne.inningString.pop();
+            playerOne.inningCancelRingers.pop();
+            playerOne.inningScoredRingers.pop();
+            playerTwo.inningScore.pop();
+            playerTwo.inningThrows.pop();
+            playerTwo.inningString.pop();
+            playerTwo.inningCancelRingers.pop();
+            playerTwo.inningScoredRingers.pop();
+
+            // Reset the inning
+            reset();
+            // Hide & show sections
+            $("#allInningStuff").fadeOut();
+            $("#inningInformation").fadeIn();
+            $("#gameLog").fadeIn();
+          });
+        });
+
+
+        function addRowToTable (plyr, table) {
+          var row = table.insertRow(-1);
+          var cellShoes = row.insertCell(0);
+          var cellResult = row.insertCell(1);
+          var cellScore = row.insertCell(2);
+          var cellTotal = row.insertCell(3);
+          cellShoes.innerHTML = completedShoes;
+          cellResult.innerHTML = plyr.inningString[currentInning];
+          cellScore.innerHTML = plyr.inningScore[currentInning];
+          cellTotal.innerHTML = plyr.runningScore(currentInning);
+        }
+
+
+        function boxWasChecked(boxNumber){
+          switch (boxNumber){
+            case 0:  // Player 1 - 2 ringers
+            if (document.getElementById("playerOneInningRingersTwoCheckbox").checked) {
+              // Checked
+
+              //  Uncheck impossible scoring boxes and make boxes/labels invisible
+              uncheckAndInvisible(1);
+              uncheckAndInvisible(2);
+              uncheckAndInvisible(3);
+              uncheckAndInvisible(6);
+              uncheckAndInvisible(7);
+              uncheckAndInvisible(8);
+            }// end if the box was checked TRUE
+
+            else {
+              // Unchecked
+
+              //  Restore visibility to possible boxes/labels
+              //    If no ringers are checked for either player
+              if (!allCheckboxes[1].checked && !allCheckboxes[4].checked && !allCheckboxes[5].checked) {
+                changeVisibility(1, true);
+                changeVisibility(2, true);
+                changeVisibility(3, true);
+                changeVisibility(6, true);
+                changeVisibility(7, true);
+                changeVisibility(8, true);
+              }
+
+              //    If opponent has two ringers checked
+              if (allCheckboxes[4].checked) {
+                changeVisibility(1, true);
+              }
+
+              //    If opponent has one ringer checked
+              if (allCheckboxes[5].checked) {
+                changeVisibility(1, true);
+                //   Opponent doesn't have one point checked
+                if (!allCheckboxes[7].checked){
+                  changeVisibility(7, true);
+                  changeVisibility(3, true);
+                }
+              }
+
+            }// end else if the box was checked FALSE
+            break;
+
+            case 1:  // Player 1 - 1 ringer
+            if (document.getElementById("playerOneInningRingersOneCheckbox").checked) {
+              //  Checked
+
+              //  Uncheck impossible scoring boxes and make boxes/labels invisible
+              uncheckAndInvisible(0);
+              uncheckAndInvisible(2);
+              uncheckAndInvisible(6);
+              uncheckAndInvisible(8);
+
+              //  Be sure 1 point possibility exists for both players if opponent doesn't have
+              //  2 ringers and this player has not claimed 1 point
+              if (!allCheckboxes[4].checked && !allCheckboxes[3]) {
+                changeVisibility(3, true);
+                changeVisibility(7, true);
+              }
+
+              //  Keep 1 point visible for this player if already checked
+              if (allCheckboxes[3].checked) {
+                changeVisibility(3, true);
+              }
+
+              //  Remove 1 point possibility for this player if opponent already claims it,
+              //  but don't uncheck it
+              if (allCheckboxes[7].checked) {
+                changeVisibility(3, false);
+              }
+
+              //  If opponent already has 1 ringer checked, no 2 ringers for opponent
+              if (allCheckboxes[5].checked) {
+                uncheckAndInvisible(4);
+              }
+
+            }// end if the box was checked TRUE
+
+            else {
+              // Unchecked
+
+              //  Restore visibility to possible boxes/labels
+              //    If no ringers are checked for either player
+              if (!allCheckboxes[0].checked && !allCheckboxes[4].checked && !allCheckboxes[5].checked) {
+                changeVisibility(0, true);
+                changeVisibility(2, true);
+                changeVisibility(3, true);
+                changeVisibility(6, true);
+                changeVisibility(7, true);
+                changeVisibility(8, true);
+              }
+
+              //    If opponent has 2 ringers checked
+              if (allCheckboxes[4].checked) {
+                changeVisibility(0, true);
+              }
+
+              //    If opponent has 1 ringer checked
+              if (allCheckboxes[5].checked) {
+                changeVisibility(0, true);
+                changeVisibility(4, false);  //  ********** MAKE SURE THIS EDIT IS CORRECT!  ************
+                //   This player cannot still have a point w/no ringer if opponent has a ringer
+                uncheckAndInvisible(3);
+              }
+
+              //    If opponent has no point checked and not 1 ringer checked
+              if (!allCheckboxes[7].checked && !allCheckboxes[5].checked) {
+                changeVisibility(4, true);
+              }
+
+              //    If this player has 1 point checked
+              if (allCheckboxes[3].checked) {
+                changeVisibility(0, false);
+                changeVisibility(2, false);
+                changeVisibility(4, false);
+                changeVisibility(6, false);
+                changeVisibility(8, false);
+                uncheckAndInvisible(7);
+              }
+
+              //    If opponent has 1 point checked
+              if (allCheckboxes[7].checked) {
+                changeVisibility(0, false);
+                changeVisibility(8, false);
+              }
+
+              //    If opponent has 1 point checked but no ringer, must lose the point
+              if (!allCheckboxes[5].checked && allCheckboxes[7].checked) {
+                allCheckboxes[7].checked = false;
+              }
+
+              //    If opponent has 1 ringer checked, then no 2 ringers for opponent
+              if (allCheckboxes[5].checked) {
+                uncheckAndInvisible(4);
+              }
+
+            }// end else if the box was checked FALSE
+            break;
+
+            case 2:  // Player 1 - 2 points
+            if (document.getElementById("playerOneInningPointsTwoCheckbox").checked) {
+              //  Checked
+
+              //  Uncheck impossible scoring boxes and make boxes/labels invisible
+              //    That is all boxes except this one!
+              for (var i = 0; i < allCheckboxes.length; i++){
+                if (i != 2) {
+                  uncheckAndInvisible(i);
+                }
+              }
+            }// end if the box was checked TRUE
+
+            else {
+              // Unchecked
+
+              //  Restore visibility to possible boxes/labels
+              //    That is all the other boxes!
+              for (var i = 0; i < allCheckboxes.length; i++){
+                if (i != 2) {
+                  changeVisibility(i, true);
+                }
+              }
+            }// end else if the box was checked FALSE
+            break;
+
+            case 3:  // Player 1 - 1 point
+            if (document.getElementById("playerOneInningPointsOneCheckbox").checked) {
+              //  Checked
+
+              //  Uncheck impossible scoring boxes and make boxes/labels invisible
+              uncheckAndInvisible(0);
+              uncheckAndInvisible(2);
+              uncheckAndInvisible(4);
+              uncheckAndInvisible(6);
+              uncheckAndInvisible(7);
+              uncheckAndInvisible(8);
+              //  If 1 ringer is checked for opponent, automatically check one ringer for this player, too
+              if (allCheckboxes[5].checked) {
+                allCheckboxes[1].checked = true;
+              }
+            }// end if the box was checked TRUE
+
+            else {
+              // Unchecked
+
+              //  Restore visibility to possible boxes/labels
+              //    If 1 ringer is checked for opponent
+              if (allCheckboxes[5].checked) {
+                // Make opponent 1 point visible
+                changeVisibility(7, true);
+              }
+              else if (allCheckboxes[1].checked) {
+                // 1 ringer is checked for this player
+                changeVisibility(4, true);
+                changeVisibility(7, true);
+              }
+              else {
+                // No ringers checked for opponent
+                for (var i = 0; i < allCheckboxes.length; i++){
+                  if (i != 1 || i != 3) {
+                    changeVisibility(i, true);
+                  }
+                }
+              }
+
+            }// end else if the box was checked FALSE
+            break;
+
+            case 4:  // Player 2 - 2 ringers
+            if (document.getElementById("playerTwoInningRingersTwoCheckbox").checked) {
+              // Checked
+
+              //  Uncheck impossible scoring boxes and make boxes/labels invisible
+              uncheckAndInvisible(2);
+              uncheckAndInvisible(3);
+              uncheckAndInvisible(5);
+              uncheckAndInvisible(6);
+              uncheckAndInvisible(7);
+              uncheckAndInvisible(8);
+            }// end if the box was checked TRUE
+
+            else {
+              // Unchecked
+
+              //  Restore visibility to possible boxes/labels
+              //    If no ringers are checked for either player
+              if (!allCheckboxes[0].checked && !allCheckboxes[1].checked && !allCheckboxes[5].checked) {
+                changeVisibility(2, true);
+                changeVisibility(3, true);
+                changeVisibility(5, true);
+                changeVisibility(6, true);
+                changeVisibility(7, true);
+                changeVisibility(8, true);
+              }
+
+              //    If opponent has two ringers checked
+              if (allCheckboxes[0].checked) {
+                changeVisibility(5, true);
+              }
+
+              //    If opponent has one ringer checked
+              if (allCheckboxes[1].checked) {
+                changeVisibility(5, true);
+                //   Opponent doesn't have one point checked
+                if (!allCheckboxes[3].checked){
+                  changeVisibility(3, true);
+                  changeVisibility(7, true);
+                }
+              }
+
+            }// end else if the box was checked FALSE
+
+            case 5:  // Player 2 - 1 ringer
+            if (document.getElementById("playerTwoInningRingersOneCheckbox").checked) {
+              //  Checked
+
+              //  Uncheck impossible scoring boxes and make boxes/labels invisible
+              uncheckAndInvisible(2);
+              uncheckAndInvisible(4);
+              uncheckAndInvisible(6);
+              uncheckAndInvisible(8);
+
+              //  Be sure 1 point possibility exists for both players if opponent doesn't have
+              //  2 ringers and this player has not claimed 1 point
+              if (!allCheckboxes[0].checked && !allCheckboxes[7]) {
+                changeVisibility(3, true);
+                changeVisibility(7, true);
+              }
+
+              //  Keep 1 point visible for this player if already checked
+              if (allCheckboxes[7].checked) {
+                changeVisibility(7, true);
+              }
+
+              //  Remove 1 point possibility for this player if opponent already claims it,
+              //  but don't uncheck it
+              if (allCheckboxes[3].checked) {
+                changeVisibility(7, false);
+              }
+
+              //  If opponent already has 1 ringer checked, no 2 ringers for opponent
+              if (allCheckboxes[1].checked) {
+                uncheckAndInvisible(0);
+              }
+
+            }// end if the box was checked TRUE
+
+            else {
+              // Unchecked
+
+              //  Restore visibility to possible boxes/labels
+              //    If no ringers are checked for either player
+              if (!allCheckboxes[0].checked && !allCheckboxes[1].checked && !allCheckboxes[4].checked) {
+                changeVisibility(2, true);
+                changeVisibility(3, true);
+                changeVisibility(4, true);
+                changeVisibility(6, true);
+                changeVisibility(7, true);
+                changeVisibility(8, true);
+              }
+
+              //    If opponent has 2 ringers checked
+              if (allCheckboxes[0].checked) {
+                changeVisibility(4, true);
+              }
+
+              //    If opponent has 1 ringer checked
+              if (allCheckboxes[5].checked) {
+                changeVisibility(4, true);
+                changeVisibility(0, false);
+                //   This player cannot still have a point w/no ringer if opponent has a ringer
+                uncheckAndInvisible(7);
+              }
+
+              //    If opponent has no point checked and not 1 ringer checked
+              if (!allCheckboxes[3].checked && !allCheckboxes[1].checked) {
+                changeVisibility(0, true);
+              }
+
+              //    If this player has 1 point checked
+              if (allCheckboxes[3].checked) {
+                changeVisibility(0, false);
+                changeVisibility(2, false);
+                changeVisibility(4, false);
+                changeVisibility(6, false);
+                changeVisibility(8, false);
+                uncheckAndInvisible(3);
+              }
+
+              //    If opponent has 1 point checked
+              if (allCheckboxes[3].checked) {
+                changeVisibility(4, false);
+                changeVisibility(8, false);
+              }
+
+              //    If opponent has 1 point checked but no ringer, must lose the point
+              if (!allCheckboxes[1].checked && allCheckboxes[3].checked) {
+                allCheckboxes[3].checked = false;
+              }
+
+              //    If opponent has 1 ringer checked, then no 2 ringers for opponent
+              if (allCheckboxes[1].checked) {
+                uncheckAndInvisible(0);
+              }
+
+            }// end else if the box was checked FALSE
+
+            break;
+
+            case 6:  // Player 2 - 2 points
+            if (document.getElementById("playerTwoInningPointsTwoCheckbox").checked) {
+              //  Checked
+
+              //  Uncheck impossible scoring boxes and make boxes/labels invisible
+              //    That is all boxes except this one!
+              for (var i = 0; i < allCheckboxes.length; i++){
+                if (i != 6) {
+                  uncheckAndInvisible(i);
+                }
+              }
+            }// end if the box was checked TRUE
+
+            else {
+              // Unchecked
+
+              //  Restore visibility to possible boxes/labels
+              //    That is all the other boxes!
+              for (var i = 0; i < allCheckboxes.length; i++){
+                if (i != 6) {
+                  changeVisibility(i, true);
+                }
+              }
+            }// end else if the box was checked FALSE
+            break;
+
+            case 7:  // Player 2 - 1 point
+            if (document.getElementById("playerTwoInningPointsOneCheckbox").checked) {
+              //  Checked
+
+              //  Uncheck impossible scoring boxes and make boxes/labels invisible
+              uncheckAndInvisible(0);
+              uncheckAndInvisible(2);
+              uncheckAndInvisible(3);
+              uncheckAndInvisible(4);
+              uncheckAndInvisible(6);
+              uncheckAndInvisible(8);
+              //  If 1 ringer is checked for opponent, automatically check one ringer for this player, too
+              if (allCheckboxes[1].checked) {
+                allCheckboxes[5].checked = true;
+              }
+            }// end if the box was checked TRUE
+
+            else {
+              // Unchecked
+
+              //  Restore visibility to possible boxes/labels
+              //    If 1 ringer is checked for opponent
+              if (allCheckboxes[1].checked) {
+                // Make opponent 1 point visible
+                changeVisibility(3, true);
+              }
+              else if (allCheckboxes[5].checked) {
+                // 1 ringer is checked for this player
+                changeVisibility(0, true);
+                changeVisibility(3, true);
+              }
+              else {
+                // No ringers checked for opponent
+                for (var i = 0; i < allCheckboxes.length; i++){
+                  if (i != 5 || i != 7) {
+                    changeVisibility(i, true);
+                  }
+                }
+              }
+
+            }// end else if the box was checked FALSE
+            break;
+
+            case 8:  //  Zero points
+            if (document.getElementById("pointsZeroCheckbox").checked) {
+              //  Checked
+
+              //  Uncheck impossible scoring boxes and make boxes/labels invisible
+              for (var i = 0; i < allCheckboxes.length - 1; i++){
+                uncheckAndInvisible(i);
+              }
+
+            }// end if the box was checked TRUE
+
+            else {
+              // Unchecked
+
+              //  Restore visibility to possible boxes/labels
+              for (var i = 0; i < allCheckboxes.length - 1; i++){
+                changeVisibility(i, true);
+              }
+
+            }// end else if the box was checked FALSE
+            break;
+          }// end switch --> boxNumber
+
+          // Update scores for this inning
+          inningScoreboardUpdate();
+        }
+
+
+        function changeVisibility(index, shouldBeVisible) {
+          if (shouldBeVisible) {
+            scoringLabels[index].style.visibility = "visible";
+            allCheckboxes[index].style.visibility = "visible";
+          }
+          else {
+            scoringLabels[index].style.visibility = "hidden";
+            allCheckboxes[index].style.visibility = "hidden";
+          }
+        }
+
+
+        function checkForWinner() {  // Didn't really use this since overtime not coded
+          // Do we have a winner...
+          if (playerOne.totalScore != playerTwo.totalScore) {
+            isGameOver = true;
+            needOvertime = false;
+          }
+          // ... or a tie (or overtime, if I choose to code that
+          else {
+            isGameOver = false;
+            needOvertime = true;
+            //  will need a variable for overtime shoes, etc.
+          }
+        }
+
+
+        function compareResults() {
+          if (playerOne.inningThrows[currentInning] =="RR" && playerTwo.inningThrows[currentInning] == "RR") {
+            // Both players have 2 ringers
+            //   Cancel the ringers
+            playerOne.inningString[currentInning] = "X X";
+            playerTwo.inningString[currentInning] = "X X";
+            //   Points for this inning
+            playerOne.inningScore[currentInning] = 0;
+            playerTwo.inningScore[currentInning] = 0;
+            //   # of cancel ringers for this inning
+            playerOne.inningCancelRingers[currentInning] = 2;
+            playerTwo.inningCancelRingers[currentInning] = 2;
+            //   # of scored ringers for this inning
+            playerOne.inningScoredRingers[currentInning] = 0;
+            playerTwo.inningScoredRingers[currentInning] = 0;
+          }
+
+          else if (playerOne.inningThrows[currentInning] =="R*" && playerTwo.inningThrows[currentInning] == "R*") {
+            // Both players have 1 ringers
+            //   Cancel the ringers
+            playerOne.inningString[currentInning] = " X ";
+            playerTwo.inningString[currentInning] = " X ";
+            //   Points for this inning
+            playerOne.inningScore[currentInning] = 0;
+            playerTwo.inningScore[currentInning] = 0;
+            //   # of cancel ringers for this inning
+            playerOne.inningCancelRingers[currentInning] = 1;
+            playerTwo.inningCancelRingers[currentInning] = 1;
+            //   # of scored ringers for this inning
+            playerOne.inningScoredRingers[currentInning] = 0;
+            playerTwo.inningScoredRingers[currentInning] = 0;
+          }
+
+          else if (playerOne.inningThrows[currentInning] =="**" && playerTwo.inningThrows[currentInning] == "**") {
+            // No ringers and no points
+            //   No ringers
+            playerOne.inningString[currentInning] = "   ";
+            playerTwo.inningString[currentInning] = "   ";
+            //   Points for this inning
+            playerOne.inningScore[currentInning] = 0;
+            playerTwo.inningScore[currentInning] = 0;
+            //   # of cancel ringers for this inning
+            playerOne.inningCancelRingers[currentInning] = 0;
+            playerTwo.inningCancelRingers[currentInning] = 0;
+            //   # of scored ringers for this inning
+            playerOne.inningScoredRingers[currentInning] = 0;
+            playerTwo.inningScoredRingers[currentInning] = 0;
+          }
+
+          else if (playerOne.inningThrows[currentInning] =="RP" && playerTwo.inningThrows[currentInning] == "R*") {
+            // Both players have 1 ringers... and Player One has a point
+            //   Cancel the ringers
+            playerOne.inningString[currentInning] = "X | ";
+            playerTwo.inningString[currentInning] = " X ";
+            //   Points for this inning
+            playerOne.inningScore[currentInning] = 1;
+            playerTwo.inningScore[currentInning] = 0;
+            //   # of cancel ringers for this inning
+            playerOne.inningCancelRingers[currentInning] = 1;
+            playerTwo.inningCancelRingers[currentInning] = 1;
+            //   # of scored ringers for this inning
+            playerOne.inningScoredRingers[currentInning] = 0;
+            playerTwo.inningScoredRingers[currentInning] = 0;
+          }
+
+          else if (playerOne.inningThrows[currentInning] =="R*" && playerTwo.inningThrows[currentInning] == "RP") {
+            // Both players have 1 ringers... and Player Two has a point
+            //   Cancel the ringers
+            playerOne.inningString[currentInning] = " X ";
+            playerTwo.inningString[currentInning] = "X | ";
+            //   Points for this inning
+            playerOne.inningScore[currentInning] = 0;
+            playerTwo.inningScore[currentInning] = 1;
+            //   # of cancel ringers for this inning
+            playerOne.inningCancelRingers[currentInning] = 1;
+            playerTwo.inningCancelRingers[currentInning] = 1;
+            //   # of scored ringers for this inning
+            playerOne.inningScoredRingers[currentInning] = 0;
+            playerTwo.inningScoredRingers[currentInning] = 0;
+          }
+
+          else if (playerOne.inningThrows[currentInning] =="P*" && playerTwo.inningThrows[currentInning] == "**") {
+            // No ringers... and Player One has a point
+            //   No ringers
+            playerOne.inningString[currentInning] = " | ";
+            playerTwo.inningString[currentInning] = "   ";
+            //   Points for this inning
+            playerOne.inningScore[currentInning] = 1;
+            playerTwo.inningScore[currentInning] = 0;
+            //   # of cancel ringers for this inning
+            playerOne.inningCancelRingers[currentInning] = 0;
+            playerTwo.inningCancelRingers[currentInning] = 0;
+            //   # of scored ringers for this inning
+            playerOne.inningScoredRingers[currentInning] = 0;
+            playerTwo.inningScoredRingers[currentInning] = 0;
+          }
+
+          else if (playerOne.inningThrows[currentInning] =="**" && playerTwo.inningThrows[currentInning] == "P*") {
+            // No ringers... and Player Two has a point
+            //   No ringers
+            playerOne.inningString[currentInning] = "   ";
+            playerTwo.inningString[currentInning] = " | ";
+            //   Points for this inning
+            playerOne.inningScore[currentInning] = 0;
+            playerTwo.inningScore[currentInning] = 1;
+            //   # of cancel ringers for this inning
+            playerOne.inningCancelRingers[currentInning] = 0;
+            playerTwo.inningCancelRingers[currentInning] = 0;
+            //   # of scored ringers for this inning
+            playerOne.inningScoredRingers[currentInning] = 0;
+            playerTwo.inningScoredRingers[currentInning] = 0;
+          }
+
+          else if (playerOne.inningThrows[currentInning] =="PP" && playerTwo.inningThrows[currentInning] == "**") {
+            // No ringers... and Player One has two points
+            console.log("Player One has two points");
+            //   No ringers
+            playerOne.inningString[currentInning] = " ||";
+            playerTwo.inningString[currentInning] = "   ";
+            //   Points for this inning
+            playerOne.inningScore[currentInning] = 2;
+            playerTwo.inningScore[currentInning] = 0;
+            //   # of cancel ringers for this inning
+            playerOne.inningCancelRingers[currentInning] = 0;
+            playerTwo.inningCancelRingers[currentInning] = 0;
+            //   # of scored ringers for this inning
+            playerOne.inningScoredRingers[currentInning] = 0;
+            playerTwo.inningScoredRingers[currentInning] = 0;
+          }
+
+          else if (playerOne.inningThrows[currentInning] =="**" && playerTwo.inningThrows[currentInning] == "PP") {
+            // No ringers... and Player Two has two points
+            //   No ringers
+            playerOne.inningString[currentInning] = "   ";
+            playerTwo.inningString[currentInning] = " ||";
+            //   Points for this inning
+            playerOne.inningScore[currentInning] = 0;
+            playerTwo.inningScore[currentInning] = 2;
+            //   # of cancel ringers for this inning
+            playerOne.inningCancelRingers[currentInning] = 0;
+            playerTwo.inningCancelRingers[currentInning] = 0;
+            //   # of scored ringers for this inning
+            playerOne.inningScoredRingers[currentInning] = 0;
+            playerTwo.inningScoredRingers[currentInning] = 0;
+          }
+
+          else if (playerOne.inningThrows[currentInning] =="R*" && playerTwo.inningThrows[currentInning] == "**") {
+            // Player One has 1 ringer (no extra points)
+            //   1 ringer
+            playerOne.inningString[currentInning] = " O ";
+            playerTwo.inningString[currentInning] = "   ";
+            //   Points for this inning
+            playerOne.inningScore[currentInning] = 3;
+            playerTwo.inningScore[currentInning] = 0;
+            //   # of cancel ringers for this inning
+            playerOne.inningCancelRingers[currentInning] = 0;
+            playerTwo.inningCancelRingers[currentInning] = 0;
+            //   # of scored ringers for this inning
+            playerOne.inningScoredRingers[currentInning] = 1;
+            playerTwo.inningScoredRingers[currentInning] = 0;
+          }
+
+          else if (playerOne.inningThrows[currentInning] =="**" && playerTwo.inningThrows[currentInning] == "R*") {
+            // Player Two has 1 ringer (no extra points)
+            //   1 ringer
+            playerOne.inningString[currentInning] = "   ";
+            playerTwo.inningString[currentInning] = " O ";
+            //   Points for this inning
+            playerOne.inningScore[currentInning] = 0;
+            playerTwo.inningScore[currentInning] = 3;
+            //   # of cancel ringers for this inning
+            playerOne.inningCancelRingers[currentInning] = 0;
+            playerTwo.inningCancelRingers[currentInning] = 0;
+            //   # of scored ringers for this inning
+            playerOne.inningScoredRingers[currentInning] = 0;
+            playerTwo.inningScoredRingers[currentInning] = 1;
+          }
+
+          else if (playerOne.inningThrows[currentInning] =="RR" && playerTwo.inningThrows[currentInning] == "R*") {
+            // Player One has 2 ringers; Player Two has 1 ringer
+            //   Keep one ringer and cancel others
+            playerOne.inningString[currentInning] = "X O";
+            playerTwo.inningString[currentInning] = " X ";
+            //   Points for this inning
+            playerOne.inningScore[currentInning] = 3;
+            playerTwo.inningScore[currentInning] = 0;
+            //   # of cancel ringers for this inning
+            playerOne.inningCancelRingers[currentInning] = 1;
+            playerTwo.inningCancelRingers[currentInning] = 1;
+            //   # of scored ringers for this inning
+            playerOne.inningScoredRingers[currentInning] = 1;
+            playerTwo.inningScoredRingers[currentInning] = 0;
+          }
+
+          else if (playerOne.inningThrows[currentInning] =="R*" && playerTwo.inningThrows[currentInning] == "RR") {
+            // Player One has 1 ringer; Player Two has 2 ringers
+            //   Keep one ringer and cancel others
+            playerOne.inningString[currentInning] = " X ";
+            playerTwo.inningString[currentInning] = "X O";
+            //   Points for this inning
+            playerOne.inningScore[currentInning] = 0;
+            playerTwo.inningScore[currentInning] = 3;
+            //   # of cancel ringers for this inning
+            playerOne.inningCancelRingers[currentInning] = 1;
+            playerTwo.inningCancelRingers[currentInning] = 1;
+            //   # of scored ringers for this inning
+            playerOne.inningScoredRingers[currentInning] = 0;
+            playerTwo.inningScoredRingers[currentInning] = 1;
+          }
+
+          else if (playerOne.inningThrows[currentInning] =="RP" && playerTwo.inningThrows[currentInning] == "**") {
+            // Player One has 1 ringer and 1 point
+            //   1 ringer & 1 point
+            playerOne.inningString[currentInning] = "O |";
+            playerTwo.inningString[currentInning] = "   ";
+            //   Points for this inning
+            playerOne.inningScore[currentInning] = 4;
+            playerTwo.inningScore[currentInning] = 0;
+            //   # of cancel ringers for this inning
+            playerOne.inningCancelRingers[currentInning] = 0;
+            playerTwo.inningCancelRingers[currentInning] = 0;
+            //   # of scored ringers for this inning
+            playerOne.inningScoredRingers[currentInning] = 1;
+            playerTwo.inningScoredRingers[currentInning] = 0;
+          }
+
+          else if (playerOne.inningThrows[currentInning] =="**" && playerTwo.inningThrows[currentInning] == "RP") {
+            // Player Two has 1 ringer and 1 point
+            //   1 ringer & 1 point
+            playerOne.inningString[currentInning] = "   ";
+            playerTwo.inningString[currentInning] = "O |";
+            //   Points for this inning
+            playerOne.inningScore[currentInning] = 0;
+            playerTwo.inningScore[currentInning] = 4;
+            //   # of cancel ringers for this inning
+            playerOne.inningCancelRingers[currentInning] = 0;
+            playerTwo.inningCancelRingers[currentInning] = 0;
+            //   # of scored ringers for this inning
+            playerOne.inningScoredRingers[currentInning] = 0;
+            playerTwo.inningScoredRingers[currentInning] = 1;
+          }
+
+          else if (playerOne.inningThrows[currentInning] =="RR" && playerTwo.inningThrows[currentInning] == "**") {
+            // Player One has 2 ringers (not canceled by Player Two)
+            //   2 ringers
+            playerOne.inningString[currentInning] = "O O";
+            playerTwo.inningString[currentInning] = "   ";
+            //   Points for this inning
+            playerOne.inningScore[currentInning] = 6;
+            playerTwo.inningScore[currentInning] = 0;
+            //   # of cancel ringers for this inning
+            playerOne.inningCancelRingers[currentInning] = 0;
+            playerTwo.inningCancelRingers[currentInning] = 0;
+            //   # of scored ringers for this inning
+            playerOne.inningScoredRingers[currentInning] = 2;
+            playerTwo.inningScoredRingers[currentInning] = 0;
+          }
+
+          else if (playerOne.inningThrows[currentInning] =="**" && playerTwo.inningThrows[currentInning] == "RR") {
+            // Player Two has 2 ringers (not canceled by Player One)
+            //   2 ringers
+            playerOne.inningString[currentInning] = "   ";
+            playerTwo.inningString[currentInning] = "O O";
+            //   Points for this inning
+            playerOne.inningScore[currentInning] = 0;
+            playerTwo.inningScore[currentInning] = 6;
+            //   # of cancel ringers for this inning
+            playerOne.inningCancelRingers[currentInning] = 0;
+            playerTwo.inningCancelRingers[currentInning] = 0;
+            //   # of scored ringers for this inning
+            playerOne.inningScoredRingers[currentInning] = 0;
+            playerTwo.inningScoredRingers[currentInning] = 2;
+          }
+        }
+
+
+        function currentShoeString() {
+          return "Shoes #" + (completedShoes + 1) + "& #" + (completedShoes + 2)
+        }
+
+
+        function decreaseCompletedShoes() {completedShoes-=2};
+
+        function decreaseCurrentInning() {currentInning--};
+
+        function editPlayerNames() {
+          // Get new player names & update on main scoreboard/tables
+          var responseOne = prompt("Enter the name of Player One", playerOne.name);
+          if (responseOne !== null && responseOne != "") {
+            playerOne.name = responseOne;
+          }
+          document.getElementById("playerOneNameLarge").innerHTML = playerOne.name;
+          document.getElementById("playerOneCaption").innerHTML = playerOne.name;
+
+          var responseTwo = prompt("Enter the name of Player Two", playerTwo.name);
+          if (responseTwo !== null && responseTwo != "") {
+            playerTwo.name = responseTwo;
+          }
+          document.getElementById("playerTwoNameLarge").innerHTML = playerTwo.name;
+          document.getElementById("playerTwoCaption").innerHTML = playerTwo.name;
+        }
+
+
+        function endOfGame() {
+          document.getElementById("shoesPrompt").innerHTML = "GAME ";
+          document.getElementById("shoesPlayed").innerHTML = "OVER";
+          alert("GAME OVER\n\n\n" +
+          playerOne.name + "  " + playerOne.totalScore() + "\n\n\n" +
+          playerTwo.name + "  " + playerTwo.totalScore());
+        }
+
+
+        function increaseCompletedShoes() {completedShoes+=2};
+
+        function increaseCurrentInning() {currentInning++};
+
+        function inningScoreboardUpdate() {
+          playerOneGotScored = false;
+          playerTwoGotScored = false;
+          // Find which check boxes are checked and visible
+          for (var i = 0; i < allCheckboxes.length; i++) {
+            if (allCheckboxes[i].checked && scoringLabels[i].style.visibility == "visible") {
+              switch (i) {
+                case 0: case 1: case 2: case 3:  // Player One results
+                scoreThePlayer(playerOne, i)
+                playerOneGotScored = true;
+                break;
+                case 4: case 5: case 6: case 7:  // Player Two results
+                scoreThePlayer(playerTwo, i)
+                playerTwoGotScored = true;
+                break;
+                case 8:                       // No points scored by either player
+                scoreThePlayer(playerOne, i)
+                scoreThePlayer(playerTwo, i)
+                playerOneGotScored = true;
+                playerTwoGotScored = true;
+              }
+            }
+          }
+          // Take care of no checkboxes checked for a player
+          if (!playerOneGotScored) {scoreThePlayer(playerOne, 8);}
+          if (!playerTwoGotScored) {scoreThePlayer(playerTwo, 8);}
+
+          // Compare results of two players to check for cancel ringers, etc.
+          compareResults();
+
+          // Put information in labels for this inning's scoring
+          document.getElementById("playerOneInningResult").innerHTML = playerOne.inningString[currentInning];
+          document.getElementById("playerTwoInningResult").innerHTML = playerTwo.inningString[currentInning];
+          document.getElementById("playerOneInningPoints").innerHTML = playerOne.inningScore[currentInning];
+          document.getElementById("playerTwoInningPoints").innerHTML = playerTwo.inningScore[currentInning];
+        }
+
+
+        function isPossibleToScore() {
+          // A final check to confirm it is OK to finalize the score of the inning
+          var thisIsOK = true;
+          // Don't allow Player 1 to have 1 point but no ringers if Player 2 has a ringer
+          if (allCheckboxes[3].checked && !allCheckboxes[1].checked && allCheckboxes[5].checked) {
+            thisIsOK = false;
+          }
+          // Don't allow Player 2 to have 1 point but no ringers if Player 1 has a ringer
+          if (allCheckboxes[7].checked && !allCheckboxes[5].checked && allCheckboxes[1].checked) {
+            thisIsOK = false;
+          }
+          return thisIsOK;
+        }
+
+
+        function reset(){
+          // Reset checkboxes & labels
+          for (var i = 0; i < allCheckboxes.length; i++) {
+            allCheckboxes[i].checked = false;
+            changeVisibility(i, true);
+          }
+          // Nothing in the scoring labels
+          document.getElementById("playerOneInningResult").innerHTML = "";
+          document.getElementById("playerTwoInningResult").innerHTML = "";
+          document.getElementById("playerOneInningPoints").innerHTML = "";
+          document.getElementById("playerTwoInningPoints").innerHTML = "";
+        }
+
+
+        function scoreThePlayer(plyr, x) {
+          // R - ringer   P - point for close shoe   * - a throw not a ringer or a point
+          switch(x) {
+            case 0: case 4:  // 2 ringers
+            plyr.inningThrows[currentInning] = "RR";
+            break;
+            case 1: case 5:  // 1 ringer
+            plyr.inningThrows[currentInning] = "R*";
+            break;
+            case 2: case 6:  // 2 points
+            plyr.inningThrows[currentInning] = "PP";
+            break;
+            case 3: case 7:  // 1 point
+            // Check to see if ringer was thrown
+            if (plyr.inningThrows[currentInning] == "R*") {
+              plyr.inningThrows[currentInning] = "RP";
+            }
+            else {
+              plyr.inningThrows[currentInning] = "P*";
+            }
+            break;
+            case 8:
+            plyr.inningThrows[currentInning] = "**";
+            break;
+            default:
+            plyr.inningThrows[currentInning] = "**";  // should never happen!
+          }
+        }
+
+
+        function uncheckAndInvisible(index) {
+          allCheckboxes[index].checked = false;
+          changeVisibility(index, false);
+        }
+
+
+        function updateScoreboard() {
+          // Update player names
+          document.getElementById("playerOneNameLarge").innerHTML = playerOne.name;
+          document.getElementById("playerTwoNameLarge").innerHTML = playerTwo.name;
+          // Update player scores
+          document.getElementById("playerOneOverallPoints").innerHTML = playerOne.totalScore();
+          document.getElementById("playerTwoOverallPoints").innerHTML = playerTwo.totalScore();
+          // Update shoes - same for each player
+          document.getElementById("shoesPlayed").innerHTML = completedShoes;
+
+          // Update expected length of game (not concerned with overtime yet)
+          //  Not concerned with overtime yet... I'll fill this in if I include overtime play
+
+          // Update game summary in tables
+          document.getElementById("playerOneCaption").innerHTML = playerOne.name;
+          document.getElementById("playerTwoCaption").innerHTML = playerTwo.name;
+          var playerOneTable = document.getElementById("tableForOne");
+          var playerTwoTable = document.getElementById("tableForTwo");
+          addRowToTable(playerOne, playerOneTable);
+          addRowToTable(playerTwo, playerTwoTable);
+
+          // Update statistics
+          document.getElementById("playerOneTotalRingers").innerHTML = playerOne.totalRingers();
+          document.getElementById("playerOneRingerPercentage").innerHTML = ((playerOne.totalRingers() / completedShoes) * 100).toFixed(1) + "%";
+          document.getElementById("playerTwoTotalRingers").innerHTML = playerTwo.totalRingers();
+          document.getElementById("playerTwoRingerPercentage").innerHTML = ((playerTwo.totalRingers() / completedShoes) * 100).toFixed(1) + "%";
+        }
+
+
+        </script>
+      </body>
+      </html>
